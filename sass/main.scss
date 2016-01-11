@@ -1,0 +1,227 @@
+//
+// Variables
+//
+
+@import "base/variables";
+
+//
+// Mixins
+//
+
+@import "mixins/clearfix";
+@import "mixins/fontsize";
+
+// 
+// Base styles
+//
+
+@import "base/normalize";
+
+//
+// Site Styles
+//
+
+body {
+	background: $backgroundColor;
+	text-align: center;
+}
+
+.container {
+	max-width: 1200px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+.global-header {
+	background: $primaryColor;
+	overflow: hidden;
+	margin-bottom: 20px;
+	padding: 10vh 0;
+	transition: all 0.5s;
+
+	@media only screen and (min-width: 768px) {
+		margin-bottom: 40px;
+		padding: 20vh 0;
+	}
+
+	&.slim {
+		padding: 5vh 0;
+	}
+
+}
+
+h1 {
+	color: $backgroundColor;
+	@include font-size(30);
+	text-transform: uppercase;
+	font-family: 'Lato', sans-serif;
+	font-weight: 800;
+	margin-bottom: 0;
+	margin-top: 0;
+
+	@media only screen and (min-width: 768px) and (min-height: 480px) {
+		@include font-size(40);
+	}
+}
+
+.subtitle {
+	color: $backgroundColor;
+	@include font-size(18);
+	text-transform: capitalize;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	margin-bottom: 0;
+
+	@media only screen and (min-width: 768px) and (min-height: 480px) {
+		@include font-size(20);
+	}
+}
+
+p.query {
+	line-height: 30px;
+	@include font-size(18);
+
+	span {
+	    display: inline-block;
+	}
+
+	@media only screen and (min-width: 768px) {
+		@include font-size(22);
+	}
+}
+
+.small {
+	@include font-size(14);
+}
+
+.loadtime {
+	width: 75px;
+}
+
+.btn {
+	border-radius: 3px;
+	background: $primaryColor;
+	padding: 10px 20px;
+	border: 0px;
+	color: $backgroundColor;
+	@include font-size(20);
+
+	&:hover {
+		background: darken($primaryColor, 20)
+	}
+}
+
+.slide-list {
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 0 0 20px;
+		list-style: none;
+
+		@media only screen and (min-width: 768px) {
+			width: 33.33%;
+			float: left;
+			padding: 0 10px 20px;
+		}
+	}
+
+	label {
+		padding-bottom: 10px;
+		display: block;
+		font-weight: bold;
+	}
+}
+
+.performance-budget {
+	overflow: hidden;	
+	margin: 0 auto 40px;
+	width: 100%;
+	max-width: 600px;
+
+	table {
+		width: 100%;
+
+		@media only screen and (min-width: 768px) {
+			width: 50%;
+			float: left;
+
+			&:first-child {
+				th, td {
+					&:last-child {
+						border-right: 0px;
+					}
+				}
+			}
+		}
+	}
+
+	th {
+		width: 33.333%;
+		background: $primaryColor;
+		font-family: 'Lato', sans-serif;
+		color: $backgroundColor;
+	}
+
+	td, th {
+		padding: 20px 0;
+		border: 1px solid $primaryColor;
+	}
+}
+
+.load-time {
+	overflow: hidden;	
+	margin: 0 auto 40px;
+	width: 100%;
+	max-width: 600px;
+
+	table {
+		width: 100%;
+	}
+
+	th {
+		background: $primaryColor;
+		font-family: 'Lato', sans-serif;
+		color: $backgroundColor;
+	}
+
+	td, th {
+		width: 50%;
+		padding: 20px 0;
+		border: 1px solid $primaryColor;
+	}
+}
+
+rzslider span.rz-pointer {
+	background-color: $primaryColor;
+}
+
+rzslider span.rz-bar {
+	background-color: lighten($primaryColor, 30);
+}
+
+.rz-pointer + .rz-bubble.rz-limit {
+	left: 0px;
+}
+
+rzslider span.rz-pointer.rz-active:after {
+	background-color: lighten($primaryColor, 30);
+}
+
+p.error {
+	color: red;
+}
+
+p.warning {
+	color: orange;
+}
+
+.total-budget {
+	@include font-size(30);
+	margin: -10px 0 20px;
+}
+
+//
+// Helpers - Before components as some components override the helpers used
+//
+@import "base/helpers";

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>What If I Drop?</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body ng-app="app" ng-controller="BudgetCtrl">
+     
+        <header class="global-header" ng-class="{'slim': step !== 1}">
+            <div class="container">
+                <h1>What If I Drop?</h1>
+                <p class="subtitle">See what features you gain access to by dropping support for a version of a browser</p>
+            </div>
+        </header>
+
+        <section  ng-class="{'hidden': step !== 1}">
+
+            <div class="container">
+                <p>In order to determine the features you would gain support for by dropping support for a browser we need to know what browsers you currently support.</p>
+
+                <ul>
+                    <li>
+                        <label>Chrome</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>47</option>
+                            <option>46</option>
+                            <option>45</option>
+                            <option>44</option>
+                            <option>43</option>
+                            <option>42</option>
+                            <option>41</option>
+                            <option>40</option>
+                            <option>39</option>
+                            <option>38</option>
+                            <option>37</option>
+                            <option>36</option>
+                            <option>35</option>
+                            <option>34</option>
+                            <option>33</option>
+                            <option>32</option>
+                            <option>31</option>
+                            <option>30</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Firefox</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>47</option>
+                            <option>46</option>
+                            <option>45</option>
+                            <option>44</option>
+                            <option>43</option>
+                            <option>42</option>
+                            <option>41</option>
+                            <option>40</option>
+                            <option>39</option>
+                            <option>38</option>
+                            <option>37</option>
+                            <option>36</option>
+                            <option>35</option>
+                            <option>34</option>
+                            <option>33</option>
+                            <option>32</option>
+                            <option>31</option>
+                            <option>30</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Edge</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>14</option>
+                            <option>13</option>
+                            <option>12</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Safari</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>11</option>
+                            <option>10</option>
+                            <option>9</option>
+                            <option>8</option>
+                            <option>7</option>
+                            <option>6</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Internet Explorer</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>11</option>
+                            <option>10</option>
+                            <option>9</option>
+                            <option>8</option>
+                            <option>7</option>
+                            <option>6</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Opera</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>36</option>
+                            <option>35</option>
+                            <option>34</option>
+                            <option>33</option>
+                            <option>32</option>
+                            <option>31</option>
+                            <option>30</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Opera Mini</label>
+                        <select>
+                            <option>Don't Support</option>
+                            <option>8</option>
+                        </select>
+                    </li>
+                </ul>
+
+                <p class="hidden error" ng-class="{'hidden': error.length === 0}">{{error}}</p>
+
+                <button ng-click="calculate()" class="btn">Calculate</button>
+            </div>
+        </section>
+
+        <section class="hidden"  ng-class="{'hidden': step !== 2}">
+            <heading>
+                <h2>Your performance budget is <span>{{budget}}KB</span></h2>
+            </heading>
+
+            <div class="container">
+                
+                <ul class="slide-list">
+                    <li>
+                        <label>HTML</label>
+                        <rzslider rz-slider-model="htmlSlider" rz-slider-floor="0" rz-slider-ceil="budget"></rzslider>
+                    </li>
+                    <li>
+                        <label>CSS</label>
+                        <rzslider rz-slider-model="cssSlider" rz-slider-floor="0" rz-slider-ceil="budget"></rzslider>
+                    </li>
+                    <li>
+                        <label>JavaScript</label>
+                        <rzslider rz-slider-model="jsSlider" rz-slider-floor="0" rz-slider-ceil="budget"></rzslider>
+                    </li>
+                    <li>
+                        <label>Images</label>
+                        <rzslider rz-slider-model="imagesSlider" rz-slider-floor="0" rz-slider-ceil="budget"></rzslider>
+                    </li>
+                    <li>
+                        <label>Video</label>
+                        <rzslider rz-slider-model="videoSlider" rz-slider-floor="0" rz-slider-ceil="budget"></rzslider>
+                    </li>
+                    <li>
+                        <label>Fonts</label>
+                        <rzslider rz-slider-model="fontsSlider" rz-slider-floor="0" rz-slider-ceil="budget"></rzslider>
+                    </li>
+
+                </ul>
+
+                <p class="slide-total">Total: {{total}}KB</p>
+
+                <p class="hidden warning" ng-class="{'hidden': total <= budget}">Warning: your total assets are exceeding your total budget.</p>
+
+                <button ng-click="finish()" class="btn">Finish</button>
+            </div>
+        </section>
+
+        <section class="hidden"  ng-class="{'hidden': step !== 3}">
+             <heading>
+                <h2>Your performance budget breakdown</h2>
+            </heading>
+
+            <div class="container">
+                <h3>Total Budget</h3>
+                <p class="total-budget">{{total}}KB</p>
+
+                <h3>Budget by asset type</h3>
+
+                <div class="performance-budget">
+                    <table>
+                        <tr>
+                            <th>HTML</th>
+                            <th>CSS</th>
+                            <th>JavaScript</th>
+                        </tr>
+                        <tr>
+                            <td>{{htmlSlider}}KB</td>
+                            <td>{{cssSlider}}KB</td>
+                            <td>{{jsSlider}}KB</td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <th>Images</th>
+                            <th>Video</th>
+                            <th>Fonts</th>
+                        </tr>
+                        <tr>
+                            <td>{{imagesSlider}}KB</td>
+                            <td>{{videoSlider}}KB</td>
+                            <td>{{fontsSlider}}KB</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Estimated load times</h3>
+
+                <div class="load-time">
+                    <table>
+                        <tr>
+                            <th>Connection Type</th>
+                            <th>Time (seconds)</th>
+                        </tr>
+                        <tr>
+                            <th>Mobile 2G - Slow (35 Kbps)</td>
+                            <td>{{mobile2gSlow}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>56K Dial-Up (49Kbps)</td>
+                            <td>{{dialup}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile 2G - Fast (150 Kbps)</td>
+                            <td>{{mobile2g}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile Edge (240 Kbps)</td>
+                            <td>{{mobileEdge}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile 3G - Slow (780 Kbps)</td>
+                            <td>{{mobile3gSlow}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>DSL (1.5Mbps)</td>
+                            <td>{{dsl}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile 3G - Fast (1.6 Mbps)</td>
+                            <td>{{mobile3gFast}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>Cable (5Mbps)</td>
+                            <td>{{cable}} secs</td>
+                        </tr>
+                        <tr>
+                            <th>FIOS (20Mbps)</td>
+                            <td>{{fios}} secs</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer class="global-footer">
+            <div class="container">
+                <p class="small">&copy; Jonathan Fielding <a href="https://www.twitter.com/jonthanfielding">@jonthanfielding</a></p>
+            </div>
+        </footer>
+
+        <script type="text/javascript">
+          WebFontConfig = {
+            google: { families: [ 'Lato:400,900:latin' ] }
+          };
+          (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+          })(); 
+        </script>
+        
+        <script src="scripts/angular.min.js"></script>
+        <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "performance-budget",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jonathan-fielding/performancebudget.io",
+  "authors": [
+    "Jonathan Fielding <j.fielding@me.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs-slider": "~0.1.32"
+  }
+}

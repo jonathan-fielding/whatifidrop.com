@@ -1,0 +1,33 @@
+{
+  "name": "performance-budget",
+  "version": "1.0.0",
+  "description": "Site about performance budgeting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathan-fielding/performancebudget.io.git"
+  },
+  "keywords": [
+    "Performance",
+    "Budgeting"
+  ],
+  "author": "Jonathan Fielding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonathan-fielding/performancebudget.io/issues"
+  },
+  "homepage": "https://github.com/jonathan-fielding/performancebudget.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-combine-media-queries": "^0.2.0",
+    "gulp-csso": "^1.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6"
+  }
+}
